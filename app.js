@@ -2,6 +2,7 @@ var express = require('express')
   , app = express()
   , port = 9911
 
+  , fs = require('fs')
   , sys = require('sys')
   , exec = require('child_process').exec
   , child
