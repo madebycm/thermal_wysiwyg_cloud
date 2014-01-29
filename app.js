@@ -2,7 +2,6 @@ var express = require('express')
   , app = express()
   , port = 9911
 
-  , fs = require('fs')
   , sys = require('sys')
   , exec = require('child_process').exec
   , child
@@ -13,9 +12,7 @@ app.use(express.bodyParser());
 
 app.get('/cap', function(req,res){
   exec('phantomjs phantom.js', function(err, stdout){
-    fs.writeFile("page/status", "FRESH", function(){
-      res.end("Captured");
-    });
+    res.send("[Capture 200 OK]")
   })
 })
 
