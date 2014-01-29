@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="print.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+    <script src="js/tinymce/tinymce.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.ajax({
+        method: 'get',
+        url: 'markup.html'
+      }).success(function(data){
+      $('textarea[name=markup]').html(data).toggle();
+
+      tinymce.init({
+            selector: "textarea",
+            menubar: false,
+            statusbar: false,
+            theme: "modern",
+            skin: "light",
+            plugins: [
+                "",
+                "",
+                "image",
+                ""
+            ],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: " | forecolor emoticons",
+            image_advtab: true,
+            templates: [
+                {title: 'Test template 1', content: 'Test 1'},
+                {title: 'Test template 2', content: 'Test 2'}
+            ],
+            theme_advanced_blockformats : "h2,h3,p"
+      });
+
+      })
+    })
+    </script>
+  </head>
+  <body class="preview">
+    <!--<div class="controls">
+      <a id="previewPage" href="#">Preview</a>
+      <a id="printPage" href="#">Print</a>
+    </div>-->
+    <div class="paper" id="paper">
+      <div class="content">
+        <form method="post" action="save">
+        <textarea name="markup" style="display:none;width:98%;height:400px;">
+        </textarea>
+        <input type="submit" value="Save / Preview">
+        </form>
+      </div>
+    </div>
+    <div class="info">
+    </div>
+  </body>
+</html>

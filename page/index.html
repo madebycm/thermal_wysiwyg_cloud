@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="print.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.ajax({
+        method: 'get',
+        url: 'markup.html'
+      }).success(function(data){
+        $('.content').html(data).toggle();
+      })
+    })
+    </script>
+  </head>
+  <body class="preview">
+    <!--<div class="controls">
+      <a id="previewPage" href="#">Preview</a>
+      <a id="printPage" href="#">Print</a>
+    </div>-->
+    <div class="paper" id="paper">
+     <div class="content" style="display:none;">
+     </div>
+    </div>
+    <div class="info">
+      <a href="/edit.html">Edit</a>
+    </div>
+  </body>
+</html>
