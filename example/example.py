@@ -13,14 +13,13 @@ except IOError:
 if os.path.isfile(CAPFILE):
   os.remove(CAPFILE)
 
-urllib.urlretrieve(API + '/' + CAPFILE, CAPFILE)
+# Get newly captured capture
+urllib.urlretrieve(API + '/' + CAPFILE, CAPFILE)  
 
+# Get the printer ready
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
-try:
-  img = Image.open(CAPFILE)
-  printer.printImage(img, True)
-  printer.feed(4)
-except IOError as e:
-  print "I/O error ({0}): {1}".format(e.errno, e.strerror)
-  print "(does " + CAPFILE + " exist?)"
+# Open 'CAPFILE' and print it
+img = Image.open(CAPFILE)
+printer.printImage(img, True)
+printer.feed(4)
